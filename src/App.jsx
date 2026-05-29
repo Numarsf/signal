@@ -211,17 +211,13 @@ export default function Signal() {
 
     try {
       const res = await fetch("/api/analyze", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 1000,
-          system: SYSTEM_PROMPT,
-          messages: [{ role: "user", content: prompt }]
-        })
-      });
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    system: SYSTEM_PROMPT,
+    messages: [{ role: "user", content: prompt }]
+  })
+});
 
       // Handle rate limit from API
       if (res.status === 429) { setError("Лимит API. Попробуй через минуту."); setLoading(false); return; }
