@@ -215,7 +215,7 @@ export default function Signal() {
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
     system: SYSTEM_PROMPT,
-    messages: [{ role: "user", content: prompt }]
+    messages: [{ role: "user", content: `Analyze this ${selectedPlatform.label} account: ${safeHandle}${safeNiche ? `. Niche: ${safeNiche}` : ""}` }]
   })
 });
 
